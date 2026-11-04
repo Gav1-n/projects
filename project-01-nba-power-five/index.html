@@ -32,4 +32,4 @@ const grid=document.getElementById('grid');
 function render(){const q=document.getElementById('search').value.toLowerCase(),c=document.getElementById('conference').value;
 grid.innerHTML=teams.filter(t=>(t[1].toLowerCase().includes(q)||t[2].toLowerCase().includes(q))&&(c==='all'||t[3]===c)).map(t=>`<article class="team-card"><div class="mini"><img class="logo" src="${logo(t[6])}" alt="${t[1]} logo"><div><div class="mini-name">${t[1]}</div><div class="mini-meta">${t[3]}ern · ${t[4]}</div></div><span class="rank-pill">#${t[0]}</span></div><p>${t[5]}</p></article>`).join('')||'<p>No teams found.</p>'}
 document.getElementById('search').addEventListener('input',render);document.getElementById('conference').addEventListener('change',render);render();
-</script></body></html>
+</script><!-- deployment refresh: 2026-11-04T23:38:59.078Z --></body></html>
