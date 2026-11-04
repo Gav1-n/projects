@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How AI Actually Works</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2d;--line:#203550;--text:#eef6ff;--muted:#9db0c7;--accent:#62d9ff;--accent2:#a78bfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 20% 0%,#132c4a 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(7,17,31,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav{height:68px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:900}.nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px}
+.hero{padding:88px 0 70px}.eyebrow{color:var(--accent);font-weight:900;font-size:12px;letter-spacing:.12em;text-transform:uppercase}h1{font-size:clamp(48px,8vw,88px);line-height:.92;letter-spacing:-.07em;max-width:850px;margin:18px 0}.lead{font-size:20px;line-height:1.6;color:var(--muted);max-width:720px}
+.section{padding:60px 0}.section h2{font-size:38px;letter-spacing:-.05em;margin:0 0 12px}.intro{color:var(--muted);max-width:700px;line-height:1.7}.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:30px 0}.step{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:14px;text-align:center;font-size:12px;font-weight:800}.step span{display:block;color:var(--accent);font-size:20px;margin-bottom:6px}
+.card{border:1px solid var(--line);background:linear-gradient(145deg,#0d1b2d,#091625);border-radius:22px;padding:26px;margin:18px 0}.card h3{margin:0 0 8px;font-size:24px}.card p{color:var(--muted);line-height:1.7}.interactive{display:grid;grid-template-columns:1fr 1fr;gap:18px}.box{border:1px solid var(--line);background:#081524;border-radius:18px;padding:20px}.box h3{margin-top:0}.slider{width:100%}.value{font-size:34px;font-weight:900;color:var(--accent);margin:8px 0}
+.network{position:relative;height:270px;margin-top:12px;background:linear-gradient(90deg,rgba(98,217,255,.05),rgba(167,139,250,.06));border:1px solid var(--line);border-radius:16px;overflow:hidden}.node{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(98,217,255,.65)}.n1{left:10%;top:45%}.n2{left:30%;top:25%}.n3{left:30%;top:65%}.n4{left:52%;top:45%;background:var(--accent2)}.n5{left:75%;top:30%}.n6{left:75%;top:60%}.n7{left:90%;top:45%;background:#fff}.line{position:absolute;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform-origin:left center;opacity:.45}.l1{left:12%;top:49%;width:19%;transform:rotate(-24deg)}.l2{left:12%;top:49%;width:19%;transform:rotate(20deg)}.l3{left:32%;top:32%;width:22%;transform:rotate(20deg)}.l4{left:32%;top:68%;width:22%;transform:rotate(-20deg)}.l5{left:54%;top:47%;width:22%;transform:rotate(-18deg)}.l6{left:54%;top:48%;width:22%;transform:rotate(17deg)}.l7{left:77%;top:33%;width:14%;transform:rotate(22deg)}.l8{left:77%;top:61%;width:14%;transform:rotate(-16deg)}
+.quiz{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quiz button{border:1px solid var(--line);background:#10243b;color:var(--text);padding:14px;border-radius:12px;cursor:pointer}.quiz button:hover{border-color:var(--accent)}#result{font-weight:800;color:var(--accent);min-height:24px;margin-top:14px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:12px}@media(max-width:760px){.steps{grid-template-columns:repeat(3,1fr)}.interactive{grid-template-columns:1fr}.hero{padding-top:60px}}@media(max-width:500px){.steps{grid-template-columns:repeat(2,1fr)}.quiz{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand">◉ HOW AI WORKS</div><nav><a href="#journey">Journey</a><a href="#network">Neural Network</a><a href="#quiz">Quiz</a></nav></div></header>
+<main>
+<section class="hero wrap"><div class="eyebrow">Project 02 · Technology</div><h1>AI is not magic. It's mathematics, data and patterns.</h1><p class="lead">An interactive beginner-friendly guide to what actually happens when an AI system learns from data, makes predictions and generates something new.</p></section>
+<section id="journey" class="section wrap"><h2>From data to answer</h2><p class="intro">Think of AI as a pipeline. Each stage transforms information until the system can produce a useful output.</p>
+<div class="steps"><div class="step"><span>01</span>Data</div><div class="step"><span>02</span>Training</div><div class="step"><span>03</span>Weights</div><div class="step"><span>04</span>Inference</div><div class="step"><span>05</span>Prediction</div><div class="step"><span>06</span>Output</div></div>
+<div class="card"><h3>1. Data</h3><p>Models learn from examples. Text, images, audio, numbers and other information are converted into representations a computer can process.</p></div>
+<div class="card"><h3>2. Training</h3><p>During training, a model repeatedly compares its predictions with known examples and adjusts internal parameters to reduce its errors.</p></div>
+<div class="card"><h3>3. Inference</h3><p>Once trained, the model can process new input. It uses the patterns encoded in its parameters to calculate likely outputs.</p></div>
+</section>
+<section id="network" class="section wrap"><h2>See a neural network</h2><p class="intro">This simplified visual shows information flowing from inputs through hidden layers to an output. Real neural networks can contain millions or billions of parameters.</p>
+<div class="box"><div class="network"><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><i class="node n5"></i><i class="node n6"></i><i class="node n7"></i><i class="line l1"></i><i class="line l2"></i><i class="line l3"></i><i class="line l4"></i><i class="line l5"></i><i class="line l6"></i><i class="line l7"></i><i class="line l8"></i></div></div>
+<div class="interactive">
+<div class="box"><h3>Change the input</h3><p class="intro">Move the slider and watch the model's confidence change.</p><input id="input" class="slider" type="range" min="0" max="100" value="65"><div class="value" id="inputValue">65%</div></div>
+<div class="box"><h3>Prediction</h3><p class="intro">A simplified confidence score—not a real AI model.</p><div class="value" id="confidence">82%</div><p id="prediction">High confidence: pattern detected.</p></div>
+</div>
+</section>
+<section id="quiz" class="section wrap"><h2>Quick AI check</h2><p class="intro">See if you've got the basics.</p><div class="card"><h3>What does a model change during training?</h3><div class="quiz"><button onclick="answer(false)">The monitor brightness</button><button onclick="answer(true)">Its internal parameters</button><button onclick="answer(false)">The internet</button><button onclick="answer(false)">The keyboard layout</button></div><div id="result"></div></div></section>
+</main>
+<footer><div class="wrap">AI Explained · Project 02 of 10 · Built as a portfolio learning experience.</div></footer>
+<script>
+const input=document.getElementById('input'),inputValue=document.getElementById('inputValue'),confidence=document.getElementById('confidence'),prediction=document.getElementById('prediction');
+input.addEventListener('input',()=>{const v=+input.value;inputValue.textContent=v+'%';const c=Math.round(45+v*.57);confidence.textContent=c+'%';prediction.textContent=c>75?'High confidence: pattern detected.':c>55?'Moderate confidence: more evidence helps.':'Low confidence: the pattern is uncertain.'});
+function answer(ok){const r=document.getElementById('result');r.textContent=ok?'Correct — training adjusts the model’s parameters to reduce error.':'Not quite — training changes the model’s internal parameters.'}
+</script>
+</body></html>
