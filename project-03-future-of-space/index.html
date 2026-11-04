@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Future of Space</title>
+<style>
+:root{--bg:#030712;--panel:#0b1220;--line:#1d2a42;--text:#f4f7ff;--muted:#a8b4c8;--cyan:#67e8f9;--violet:#a78bfa;--gold:#fbbf24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#182a52 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(3,7,18,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;letter-spacing:.04em}.nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:13px}
+.hero{min-height:720px;display:flex;align-items:center;padding:90px 0;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-180px;top:80px;background:radial-gradient(circle,rgba(103,232,249,.18),transparent 65%);pointer-events:none}.eyebrow{color:var(--cyan);font-weight:900;font-size:12px;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(58px,10vw,118px);line-height:.86;letter-spacing:-.08em;max-width:900px;margin:18px 0}.lead{font-size:20px;line-height:1.7;color:var(--muted);max-width:760px}
+.section{padding:82px 0}.section h2{font-size:44px;letter-spacing:-.06em;margin:0 0 12px}.intro{color:var(--muted);line-height:1.75;max-width:780px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.card{background:linear-gradient(145deg,#0b1220,#070d18);border:1px solid var(--line);border-radius:22px;padding:24px}.card h3{margin:0 0 10px;font-size:22px}.card p{color:var(--muted);line-height:1.7}.tag{display:inline-block;color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.timeline{display:grid;gap:12px;margin-top:30px}.era{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:24px;border:1px solid var(--line);border-radius:18px;background:#080f1c}.era strong{color:var(--cyan);font-size:20px}.era h3{margin:0 0 6px}.era p{margin:0;color:var(--muted);line-height:1.7}
+.orbit{height:420px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at center,#101b31 0,#050a13 58%);position:relative;overflow:hidden;margin-top:30px}.sun{position:absolute;left:50%;top:50%;width:72px;height:72px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff,#fbbf24 35%,#f97316 70%,transparent 72%);box-shadow:0 0 55px rgba(251,191,36,.45)}.orbitline{position:absolute;left:50%;top:50%;border:1px solid rgba(103,232,249,.25);border-radius:50%;transform:translate(-50%,-50%)}.o1{width:170px;height:90px}.o2{width:300px;height:160px}.o3{width:470px;height:250px}.planet{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--cyan);box-shadow:0 0 16px rgba(103,232,249,.7);left:73%;top:28%}.planet2{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--violet);left:24%;top:63%;box-shadow:0 0 14px rgba(167,139,250,.7)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}.fact{padding:18px;border:1px solid var(--line);border-radius:16px;background:#080f1c}.fact b{display:block;font-size:26px;color:var(--cyan)}.fact span{color:var(--muted);font-size:12px}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:12px}
+@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr 1fr}.era{grid-template-columns:1fr}.hero{min-height:620px}}@media(max-width:520px){.cards{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr}.nav a{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand">✦ THE FUTURE OF SPACE</div><nav><a href="#technologies">Technologies</a><a href="#timeline">Road Ahead</a><a href="#orbital">Explore</a></nav></div></header>
+<main>
+<section class="hero wrap"><div><div class="eyebrow">Project 03 · Space & Technology</div><h1>We are only at the beginning.</h1><p class="lead">Space exploration is changing from a series of heroic missions into an increasingly reusable, commercial and technological ecosystem. Explore the technologies that could shape humanity's next era beyond Earth.</p></div></section>
+
+<section id="technologies" class="section wrap"><h2>Six technologies to watch</h2><p class="intro">The future of space won't depend on one breakthrough. It will emerge from many technologies improving at the same time.</p>
+<div class="cards">
+<div class="card"><span class="tag">01 · Launch</span><h3>Reusable rockets</h3><p>Rockets that can fly multiple times can reduce the cost and turnaround time of getting hardware into orbit. Reusability changes the economics of launch.</p></div>
+<div class="card"><span class="tag">02 · Moon</span><h3>Lunar infrastructure</h3><p>Future missions could establish communications, power systems, landing zones and other infrastructure that makes repeated lunar operations easier.</p></div>
+<div class="card"><span class="tag">03 · Mars</span><h3>Living off Earth</h3><p>Mars missions require more than a spacecraft. Long-duration habitats, recycling systems, food production and reliable power would all be essential.</p></div>
+<div class="card"><span class="tag">04 · Telescopes</span><h3>Seeing deeper</h3><p>Next-generation observatories can study distant galaxies, stars and planets, helping scientists understand how planetary systems form and evolve.</p></div>
+<div class="card"><span class="tag">05 · Industry</span><h3>Manufacturing in space</h3><p>Microgravity offers a different environment for research and manufacturing. Some materials and biological processes may benefit from conditions difficult to reproduce on Earth.</p></div>
+<div class="card"><span class="tag">06 · Energy</span><h3>Powering the frontier</h3><p>Reliable solar power, advanced batteries and potentially new nuclear systems could support spacecraft, lunar bases and eventually deeper-space missions.</p></div>
+</div></section>
+
+<section id="timeline" class="section wrap"><h2>The road ahead</h2><p class="intro">Think of space exploration as a progression: first make access cheaper, then make destinations easier to operate, then build systems that can stay productive for longer.</p>
+<div class="timeline">
+<div class="era"><strong>NOW → 2030s</strong><div><h3>More frequent access</h3><p>Reusable launch systems, commercial spacecraft, new satellites and lunar missions continue pushing down the barriers to reaching orbit and operating there.</p></div></div>
+<div class="era"><strong>2030s → 2040s</strong><div><h3>A more active Moon</h3><p>Robotic exploration, scientific instruments and infrastructure could make the Moon a much busier destination and a testbed for technologies needed farther away.</p></div></div>
+<div class="era"><strong>2040s →</strong><div><h3>Deep-space expansion</h3><p>Long-duration missions could push farther into the solar system. The engineering challenge becomes less about visiting and more about sustaining people and machines.</p></div></div>
+</div></section>
+
+<section id="orbital" class="section wrap"><h2>Think in orbits</h2><p class="intro">Space isn't simply “up.” A spacecraft's orbit is a carefully chosen path determined by velocity, gravity, altitude and mission goals.</p>
+<div class="orbit"><div class="sun"></div><div class="orbitline o1"></div><div class="orbitline o2"></div><div class="orbitline o3"></div><div class="planet"></div><div class="planet2"></div></div>
+<div class="facts"><div class="fact"><b>1</b><span>Gravity never disappears in orbit.</span></div><div class="fact"><b>2</b><span>Orbit is continuous free-fall around a body.</span></div><div class="fact"><b>3</b><span>Velocity is just as important as altitude.</span></div><div class="fact"><b>4</b><span>Every mission is a trade-off in mass, energy and time.</span></div></div>
+</section>
+
+<section class="section wrap"><h2>What makes the future difficult?</h2><p class="intro">The biggest obstacles aren't only about inventing better rockets. Space is an extreme environment, and every kilogram, watt and minute of crew time matters.</p>
+<div class="cards">
+<div class="card"><h3>Radiation</h3><p>Beyond Earth's protective magnetic environment, high-energy particles create serious risks for electronics and human health.</p></div>
+<div class="card"><h3>Distance</h3><p>Communication delays and long travel times make deep-space missions fundamentally different from operating near Earth.</p></div>
+<div class="card"><h3>Life support</h3><p>Humans need air, water, food, temperature control and waste recycling continuously. A habitat has to behave like a small ecosystem.</p></div>
+<div class="card"><h3>Economics</h3><p>Technically possible does not always mean economically sustainable. Future space systems need reliable reasons to justify their cost.</p></div>
+<div class="card"><h3>Reliability</h3><p>Repairing hardware millions of kilometres away is difficult. Systems increasingly need redundancy, autonomy and the ability to survive failures.</p></div>
+<div class="card"><h3>Human factors</h3><p>Isolation, microgravity, confined environments and long missions create engineering and psychological challenges that cannot be ignored.</p></div>
+</div></section>
+
+<section class="section wrap"><h2>The big idea</h2><div class="card"><p style="font-size:20px;color:var(--text);line-height:1.8;margin:0"><strong>The future of space isn't one giant leap.</strong> It is an engineering staircase: cheaper launches, smarter spacecraft, better habitats, more capable robots, stronger infrastructure and eventually systems that can operate beyond Earth with less support from home.</p></div></section>
+</main>
+<footer><div class="wrap">The Future of Space · Project 03 of 10 · Built as a portfolio learning experience.</div></footer>
+</body>
+</html>
