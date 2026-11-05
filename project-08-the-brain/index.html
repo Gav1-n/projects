@@ -30,12 +30,157 @@ footer{border-top:1px solid #ffffff14;padding:30px 0;color:#8986a2;font-size:11p
 <section class="wrap section" id="quiz"><div class="quiz"><div class="eyebrow">Quick challenge / Check your understanding</div><h3>Which structure is especially important for forming many new memories?</h3><p>Think about the brain region involved in organising and consolidating new experiences.</p><div class="answers"><button data-answer="a">Cerebellum</button><button data-answer="b">Hippocampus</button><button data-answer="c">Occipital lobe</button></div><div id="feedback" aria-live="polite"></div></div></section>
 </main><footer><div class="wrap">GAV1-N PROJECTS · THE BRAIN · A journey through the human nervous system.</div></footer>
 <script>
-const dropbtn=document.getElementById('dropbtn'),dropmenu=document.getElementById('dropmenu');dropbtn.addEventListener('click',()=>{const open=dropmenu.classList.toggle('open');dropbtn.setAttribute('aria-expanded',open)});document.addEventListener('click',e=>{if(!e.target.closest('.dropdown')){dropmenu.classList.remove('open');dropbtn.setAttribute('aria-expanded','false')}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){dropmenu.classList.remove('open');dropbtn.setAttribute('aria-expanded','false')}});
-function scrollToSection(id){const el=document.getElementById(id);if(!el)return;const start=window.scrollY,end=el.getBoundingClientRect().top+start-82,distance=end-start,duration=760;let t0;function step(t){if(!t0)t0=t;const p=Math.min(1,(t-t0)/duration),ease=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;window.scrollTo(0,start+distance*ease);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
-dropmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const id=a.getAttribute('href').slice(1);dropmenu.classList.remove('open');dropbtn.setAttribute('aria-expanded','false');scrollToSection(id)}));
-let firing=false;const fire=document.getElementById('fire'),signal=document.getElementById('signal'),rate=document.getElementById('rate');function updateRate(){document.getElementById('rateval').textContent=rate.value;document.getElementById('rateread').textContent=rate.value+' pulses / demo'}rate.addEventListener('input',updateRate);updateRate();fire.addEventListener('click',()=>{if(firing)return;firing=true;const speed=Number(rate.value),duration=1500/speed;signal.style.transition='none';signal.setAttribute('d','M155 151 L155 151');document.getElementById('signalstate').textContent='Signal travelling';requestAnimationFrame(()=>{signal.style.transition='d '+duration+'ms linear';signal.setAttribute('d','M155 151 L490 151')});setTimeout(()=>{document.getElementById('signalstate').textContent='Signal delivered';signal.style.transition='none';signal.setAttribute('d','M155 151 L155 151');firing=false},duration+80)});
-const regionData={frontal:['Frontal lobe','Involved in planning, decision-making, voluntary movement, problem-solving and aspects of personality and impulse control. The prefrontal cortex is especially important for complex executive functions.'],parietal:['Parietal lobe','Helps process touch and body position, and combines sensory information to support spatial awareness and attention.'],temporal:['Temporal lobe','Important for processing sound, understanding language and aspects of memory. It includes structures involved in recognising objects and faces.'],occipital:['Occipital lobe','The main cortical region for processing visual information arriving from the eyes. Different areas analyse features such as edges, colour and motion.']};function pickRegion(key){const d=regionData[key];document.getElementById('regiontitle').textContent=d[0];document.getElementById('regiondesc').textContent=d[1];document.querySelectorAll('[data-pick]').forEach(b=>b.classList.toggle('active',b.dataset.pick===key));document.querySelectorAll('.region').forEach(p=>p.classList.toggle('selected',p.dataset.region===key))}document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>pickRegion(b.dataset.pick)));document.querySelectorAll('.region').forEach(p=>p.addEventListener('click',()=>pickRegion(p.dataset.region)));
-let repetitions=0;const dots=[...document.querySelectorAll('.memorydot')];function updateMemory(){dots.forEach((d,i)=>d.classList.toggle('lit',i<=Math.min(4,Math.floor(repetitions/2))));document.getElementById('reps').textContent=repetitions;document.getElementById('strength').textContent=repetitions===0?'Starting':repetitions<3?'Building':repetitions<7?'Strengthening':'Well practised'} }document.getElementById('practice').addEventListener('click',()=>{repetitions=Math.min(10,repetitions+1);updateMemory()});document.getElementById('resetmemory').addEventListener('click',()=>{repetitions=0;updateMemory()});updateMemory();
-let waiting=false,ready=false,startAt=0,delayTimer=null;const stage=document.getElementById('reactionstage'),startButton=document.getElementById('startreaction');function resetReaction(){clearTimeout(delayTimer);waiting=true;ready=false;stage.className='reactionstage';document.getElementById('reactiontext').textContent='Wait for green…';document.getElementById('reactionhint').textContent='Stay focused — the signal is coming.';document.getElementById('reactionresult').textContent='—';startButton.disabled=true;delayTimer=setTimeout(()=>{ready=true;startAt=performance.now();stage.className='reactionstage ready';document.getElementById('reactiontext').textContent='CLICK NOW!';document.getElementById('reactionhint').textContent='Go!'},1200+Math.random()*2600)}startButton.addEventListener('click',()=>{if(waiting)return;waiting=true;resetReaction()});stage.addEventListener('click',()=>{if(!waiting)return;if(!ready){clearTimeout(delayTimer);waiting=false;stage.className='reactionstage wait';document.getElementById('reactiontext').textContent='Too soon!';document.getElementById('reactionhint').textContent='Wait until the panel turns green, then click.';startButton.disabled=false;return}const ms=Math.round(performance.now()-startAt);waiting=false;ready=false;stage.className='reactionstage';document.getElementById('reactiontext').textContent='Nice response.';document.getElementById('reactionhint').textContent='Press start to try again.';document.getElementById('reactionresult').textContent=ms+' ms';startButton.disabled=false});
-document.querySelectorAll('[data-answer]').forEach(b=>b.addEventListener('click',()=>{const f=document.getElementById('feedback');if(b.dataset.answer==='b'){f.textContent='Correct. The hippocampus is especially important for forming many new memories and helping organise them for longer-term storage.';f.style.color='var(--cyan)'}else{f.textContent='Not quite. The cerebellum helps coordinate movement, and the occipital lobe processes vision. Try the hippocampus.';f.style.color='var(--gold)'}}));
+document.addEventListener('DOMContentLoaded', () => {
+  const $ = id => document.getElementById(id);
+  const dropbtn = $('dropbtn'), dropmenu = $('dropmenu');
+  dropbtn.addEventListener('click', () => {
+    const opened = dropmenu.classList.toggle('open');
+    dropbtn.setAttribute('aria-expanded', String(opened));
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.dropdown')) {
+      dropmenu.classList.remove('open');
+      dropbtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      dropmenu.classList.remove('open');
+      dropbtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  function scrollToSection(id) {
+    const target = $(id);
+    if (!target) return;
+    const from = window.scrollY, to = target.getBoundingClientRect().top + from - 82;
+    const distance = to - from, duration = 760;
+    let began;
+    function step(now) {
+      if (began === undefined) began = now;
+      const p = Math.min(1, (now - began) / duration);
+      const eased = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+      window.scrollTo(0, from + distance * eased);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  dropmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    dropmenu.classList.remove('open');
+    dropbtn.setAttribute('aria-expanded', 'false');
+    scrollToSection(id);
+  }));
+
+  const rate = $('rate');
+  let firing = false;
+  function updateRate() {
+    $('rateval').textContent = rate.value;
+    $('rateread').textContent = rate.value + ' pulses / demo';
+  }
+  rate.addEventListener('input', updateRate);
+  updateRate();
+  $('fire').addEventListener('click', () => {
+    if (firing) return;
+    firing = true;
+    $('signalstate').textContent = 'Signal travelling';
+    const svg = document.querySelector('.neuronvisual svg');
+    const previous = $('signalPulse');
+    if (previous) previous.remove();
+    const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    pulse.id = 'signalPulse';
+    pulse.setAttribute('cx', '155');
+    pulse.setAttribute('cy', '151');
+    pulse.setAttribute('r', '8');
+    pulse.setAttribute('fill', '#ffffff');
+    pulse.setAttribute('filter', 'drop-shadow(0 0 8px #ffffff)');
+    svg.appendChild(pulse);
+    const motion = pulse.animate([{cx:'155px'},{cx:'490px'}], {duration:1500 / Number(rate.value), easing:'linear', fill:'forwards'});
+    motion.onfinish = () => {
+      $('signalstate').textContent = 'Signal delivered';
+      pulse.remove();
+      firing = false;
+    };
+  });
+
+  const regionData = {
+    frontal:['Frontal lobe','Involved in planning, decision-making, voluntary movement, problem-solving and aspects of personality and impulse control. The prefrontal cortex is especially important for complex executive functions.'],
+    parietal:['Parietal lobe','Helps process touch and body position, and combines sensory information to support spatial awareness and attention.'],
+    temporal:['Temporal lobe','Important for processing sound, understanding language and aspects of memory. It includes structures involved in recognising objects and faces.'],
+    occipital:['Occipital lobe','The main cortical region for processing visual information arriving from the eyes. Different areas analyse features such as edges, colour and motion.']
+  };
+  function pickRegion(key) {
+    const details = regionData[key];
+    if (!details) return;
+    $('regiontitle').textContent = details[0];
+    $('regiondesc').textContent = details[1];
+    document.querySelectorAll('[data-pick]').forEach(b => b.classList.toggle('active', b.dataset.pick === key));
+    document.querySelectorAll('.region').forEach(p => p.classList.toggle('selected', p.dataset.region === key));
+  }
+  document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => pickRegion(b.dataset.pick)));
+  document.querySelectorAll('.region').forEach(p => p.addEventListener('click', () => pickRegion(p.dataset.region)));
+
+  let repetitions = 0;
+  const dots = [...document.querySelectorAll('.memorydot')];
+  function updateMemory() {
+    dots.forEach((d,i) => d.classList.toggle('lit', i <= Math.min(4, Math.floor(repetitions / 2))));
+    $('reps').textContent = repetitions;
+    $('strength').textContent = repetitions === 0 ? 'Starting' : repetitions < 3 ? 'Building' : repetitions < 7 ? 'Strengthening' : 'Well practised';
+  }
+  $('practice').addEventListener('click', () => { repetitions = Math.min(10, repetitions + 1); updateMemory(); });
+  $('resetmemory').addEventListener('click', () => { repetitions = 0; updateMemory(); });
+  updateMemory();
+
+  let waiting = false, ready = false, startAt = 0, delayTimer = null;
+  const stage = $('reactionstage'), startButton = $('startreaction');
+  function resetReaction() {
+    clearTimeout(delayTimer);
+    waiting = true;
+    ready = false;
+    stage.className = 'reactionstage';
+    $('reactiontext').textContent = 'Wait for green…';
+    $('reactionhint').textContent = 'Stay focused — the signal is coming.';
+    $('reactionresult').textContent = '—';
+    startButton.disabled = true;
+    delayTimer = setTimeout(() => {
+      ready = true;
+      startAt = performance.now();
+      stage.className = 'reactionstage ready';
+      $('reactiontext').textContent = 'CLICK NOW!';
+      $('reactionhint').textContent = 'Go!';
+    }, 1200 + Math.random() * 2600);
+  }
+  startButton.addEventListener('click', () => { if (!waiting) resetReaction(); });
+  stage.addEventListener('click', () => {
+    if (!waiting) return;
+    if (!ready) {
+      clearTimeout(delayTimer);
+      waiting = false;
+      stage.className = 'reactionstage wait';
+      $('reactiontext').textContent = 'Too soon!';
+      $('reactionhint').textContent = 'Wait until the panel turns green, then click.';
+      startButton.disabled = false;
+      return;
+    }
+    const ms = Math.round(performance.now() - startAt);
+    waiting = false;
+    ready = false;
+    stage.className = 'reactionstage';
+    $('reactiontext').textContent = 'Nice response.';
+    $('reactionhint').textContent = 'Press start to try again.';
+    $('reactionresult').textContent = ms + ' ms';
+    startButton.disabled = false;
+  });
+
+  document.querySelectorAll('[data-answer]').forEach(b => b.addEventListener('click', () => {
+    const feedback = $('feedback');
+    if (b.dataset.answer === 'b') {
+      feedback.textContent = 'Correct. The hippocampus is especially important for forming many new memories and helping organise them for longer-term storage.';
+      feedback.style.color = 'var(--cyan)';
+    } else {
+      feedback.textContent = 'Not quite. The cerebellum helps coordinate movement, and the occipital lobe processes vision. Try the hippocampus.';
+      feedback.style.color = 'var(--gold)';
+    }
+  }));
+});
 </script></body></html>
